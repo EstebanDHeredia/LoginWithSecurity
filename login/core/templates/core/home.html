@@ -3,13 +3,31 @@
 
 {% block content %}
 
-<h3>Inicio</h3>
-<hr>
 {% if request.user.is_authenticated %}
-    <h4>
-        Bienvenido {{ user.username|upper }}
-    </h4>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img src={{ user.picture.url }} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.username | upper }}</h5>
+                <small><i class="bi bi-geo-alt"></i> {{user.location}}</small>
+                <p class="card-text mt-3">{{ user.bio }}</p>
+                <a href={% url 'logout' %} class="btn btn-sm btn-success">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h4>Titulo Cualquiera</h4>
+        <p>{% lorem %}</p>
+    </div>
+</div>
+{% else %}
+    <h4>Titulo Cualquiera</h4>
+    <p>{% lorem %}</p>
 {% endif %}
 
+<h3>Inicio</h3>
+<hr>
+
+
 {% endblock %}
-    
