@@ -26,7 +26,7 @@ def register(request):
     }
 
     if request.method == 'POST':
-        user_creation_form = CustomUserCreationForm(data=request.POST)
+        user_creation_form = CustomUserCreationForm(request.POST, request.FILES)
     
         if user_creation_form.is_valid():
             user_creation_form.save()
@@ -37,5 +37,10 @@ def register(request):
             login(request, user)
             
             return redirect('home')
+        
+        else:
+            data = {
+                'form': user_creation_form,
+            }
 
     return render(request, 'registration/register.html', data)

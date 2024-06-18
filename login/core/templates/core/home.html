@@ -2,6 +2,8 @@
 
 
 {% block content %}
+<h3>Inicio</h3>
+<hr>
 
 {% if request.user.is_authenticated %}
 <div class="row">
@@ -25,9 +27,5 @@
     <h4>Titulo Cualquiera</h4>
     <p>{% lorem %}</p>
 {% endif %}
-
-<h3>Inicio</h3>
-<hr>
-
 
 {% endblock %}
